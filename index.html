@@ -3,28 +3,64 @@
   <head>
     <meta charset="utf-8">
     <title>Weather App</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css?v=19">
   </head>
   <body>
 
     <div class="container">
-
       <div class="header">
         <div class="unitSelector">
-
+          <form class="unitSlectorForm" action="index.html" method="post">
+            <label for="celcius">
+              <input type="radio" id="celcius" name="units" value="c">
+              &#8451;
+            </label>
+            <label for="farenheit">
+              <input type="radio" id="farenheit" name="units" value="f">
+              &#8457;
+            </label>
+          </form>
         </div>
 
         <div class="searchBar">
-
+          <form class="searchBarForm" action="index.html" method="post">
+            <input type="text" name="searchBar" value="" placeholder="City..">
+          </form>
         </div>
       </div>
 
       <div class="currentWeather">
+        <div class="location">
+          <p>CITY, STATE/PROVINCE, COUNTRY</p>
+        </div>
+        <div class="temperature">
+          <hr />
+          <p><span id="temperature"></span></p>
+          <hr />
+        </div>
+        <div class="information">
+          <p>
+            DESCRIPTION: <span id="weatherDescription"></span><br />
+            WIND: <span id="windSpeed"></span><br />
+            HUMIDITY: <span id="humidityIndex"></span><br />
+            PRESSURE: <span id="atmosphericPressure"></span><br />
+            VISIBILITY: <span id="visibility"></span>
+          </p>
 
+        </div>
       </div>
 
       <div class="otherForecasts">
-
+        <ul>
+          <li id="shortTerm">Short Term Forecast</li>
+          <li id="shortTermForecast"><div class="space"></div></li>
+          <li id="hourly">Hourly Forecast</li>
+          <li id="hourlyForecast"><div class="space"></div></li>
+          <li id="sevenDay">7-Day Forecast</li>
+          <li id="sevenDayForecast"><div class="space"></div></li>
+          <li id="fourteenDay">14-Day Forecast</li>
+          <li id="fourteenDayForecast"><div class="space"></div></li>
+        </ul>
       </div>
 
     </div>

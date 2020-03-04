@@ -1,3 +1,59 @@
-body {
+.container {
   width: 550px;
+  margin: auto;
+}
+
+.header {
+  background-color: #ffa;
+}
+.unitSelector {
+  width: 49.5%;
+  margin: 10px auto 10px 0;
+  display: inline-block;
+  text-align: left;
+}
+.searchBar {
+  width: 49.5%;
+  margin: 10px 0px 10px auto;
+  display: inline-block;
+  text-align: right;
+}
+
+
+.currentWeather {
+  background-color: #aff;
+  height: 200px;
+}
+.location {
+  font-size: 0.8em;
+  width: 50%;
+  margin: 5px auto 0 0;
+  height: initial;
+}
+.temperature {
+  font-size: 2em;
+  width: 50%;
+  margin: 1px auto 1px 0;
+}
+.information {
+  font-size: 0.8em;
+  width: 50%;
+  margin: 5px auto 5px 0;
+  height: initial;
+}
+
+
+.otherForecasts {
+  background-color: #faa;
+}
+.otherForecasts ul {
+  text-align: center;
+  text-transform: uppercase;
+  list-style: none;
+  padding-left: 0;
+}
+
+.space {
+  background-color: #cf1;
+  height: 40px;
 }
