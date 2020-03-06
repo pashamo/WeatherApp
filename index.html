@@ -3,23 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Weather App</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css?v=19">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
   <body>
+    <div class="test">
+
+    </div>
 
     <div class="container">
       <div class="header">
         <div class="unitSelector">
-          <form class="unitSlectorForm" action="index.html" method="post">
-            <label for="celcius">
-              <input type="radio" id="celcius" name="units" value="c">
-              &#8451;
-            </label>
-            <label for="farenheit">
-              <input type="radio" id="farenheit" name="units" value="f">
-              &#8457;
-            </label>
-          </form>
+          <ul>
+            <li class="currentUnit" id="c">&#8451;</li>
+            <li id="f">&#8457;</li>
+          </ul>
         </div>
 
         <div class="searchBar">
@@ -31,11 +28,12 @@
 
       <div class="currentWeather">
         <div class="location">
-          <p>CITY, STATE/PROVINCE, COUNTRY</p>
+          <p id="location">CITY, STATE/PROVINCE, COUNTRY</p>
         </div>
         <div class="temperature">
           <hr />
           <p><span id="temperature"></span></p>
+          <p><span id="feelsLike"></span></p>
           <hr />
         </div>
         <div class="information">
@@ -46,24 +44,36 @@
             PRESSURE: <span id="atmosphericPressure"></span><br />
             VISIBILITY: <span id="visibility"></span>
           </p>
-
         </div>
       </div>
 
       <div class="otherForecasts">
         <ul>
           <li id="weatherMap">Weather Map</li>
-          <li id="weatherMapDiv"><div class="space"></div></li>
+          <li id="weatherMapDiv">
+            <div class="space">
+              ***Issue with map API, feature will be postponed to future iteration***
+            </div>
+          </li>
           <li id="hourly">3-Hour Forecast</li>
-          <li id="hourlyForecast"><div class="space"></div></li>
+          <li id="hourlyForecast">
+            <div class="space">
+
+            </div>
+          </li>
           <li id="fiveDay">5-Day Forecast</li>
-          <li id="fiveDayForecast"><div class="space"></div></li>
+          <li id="fiveDayForecast">
+            <div class="space">
+
+            </div>
+          </li>
         </ul>
       </div>
 
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/config.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
   </body>
 </html>
