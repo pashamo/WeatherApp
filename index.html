@@ -14,7 +14,7 @@
       <div class="header">
         <div class="unitSelector">
           <ul>
-            <li class="currentUnit" id="c">&#8451;</li>
+            <li class="current" id="c">&#8451;</li>
             <li id="f">&#8457;</li>
           </ul>
         </div>
@@ -32,36 +32,36 @@
         </div>
         <div class="temperature">
           <hr />
-          <p><span id="temperature"></span></p>
-          <p><span id="feelsLike"></span></p>
+            <span id="temperature"></span>
+            <span id="feelsLike"></span>
           <hr />
         </div>
         <div class="information">
           <p>
-            DESCRIPTION: <span id="weatherDescription"></span><br />
-            WIND: <span id="windSpeed"></span><br />
-            HUMIDITY: <span id="humidityIndex"></span><br />
-            PRESSURE: <span id="atmosphericPressure"></span><br />
-            VISIBILITY: <span id="visibility"></span>
+            <span class="spaceOut">DESCRIPTION:</span> <span id="weatherDescription"></span><br />
+            <span class="spaceOut">WIND:</span> <span id="windSpeed"></span><br />
+            <span class="spaceOut">HUMIDITY:</span> <span id="humidityIndex"></span><br />
+            <span class="spaceOut">PRESSURE:</span> <span id="atmosphericPressure"></span><br />
+            <span class="spaceOut">VISIBILITY:</span> <span id="visibility"></span>
           </p>
         </div>
       </div>
 
       <div class="otherForecasts">
         <ul>
-          <li id="weatherMap">Weather Map</li>
+          <li class="mainItem firstItem" id="weatherMap">Weather Map</li>
           <li id="weatherMapDiv">
             <div class="space">
               ***Issue with map API, feature will be postponed to future iteration***
             </div>
           </li>
-          <li id="hourly">3-Hour Forecast</li>
+          <li class="mainItem" id="hourly">3-Hour / 1-Day Forecast</li>
           <li id="hourlyForecast">
             <div class="space">
-
+              
             </div>
           </li>
-          <li id="fiveDay">5-Day Forecast</li>
+          <li class="mainItem lastItem" id="fiveDay">3-Hour / 5-Day Forecast</li>
           <li id="fiveDayForecast">
             <div class="space">
 

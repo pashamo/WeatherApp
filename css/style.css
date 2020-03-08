@@ -2,15 +2,22 @@
 
 body {
   font-family: "Amaranth", sans-serif;
+  background-color: #000;
+  color: #fff;
 }
 
 .container {
   width: 550px;
-  margin: auto;
+  margin: 20px auto;
 }
 
 .header {
-  background-color: #ffa;
+  text-shadow: 2px 2px 1px hsl(37, 93%, 31%);
+  border-top: 2px solid hsl(37, 93%, 71%);
+  border-bottom: 2px solid hsl(37, 93%, 31%);
+  background-color: #F39C12;
+  border-radius: 5px;
+  padding: 0 10px;
 }
 .unitSelector {
   width: 49.5%;
@@ -19,7 +26,6 @@ body {
   text-align: left;
 }
 .unitSelector ul {
-  background-color: pink;
   border-radius: 2px;
   list-style: none;
   text-align: left;
@@ -30,13 +36,14 @@ body {
 .unitSelector ul li {
   display: inline-block;
   text-align: center;
+  border-bottom: 2px solid hsl(37, 93%, 31%);
+  border-radius: 50%;
   height: 20px;
-  width: 50px;
-  padding: 5px 10px;
-  background-color: teal;
+  width: 20px;
+  padding: 5px 5px;
 }
-.currentUnit {
-  background-color: yellow;
+.current {
+  background-color: #FFC300;
 }
 
 .searchBar {
@@ -48,8 +55,17 @@ body {
 
 
 .currentWeather {
-  background-color: #aff;
+  margin: 20px auto;
+  padding: 0 10px;
   min-height: 200px;
+  background-color: #433F3F;
+  border-radius: 5px;
+  border-top: 2px solid hsl(0, 6%, 45%);
+  border-bottom: 2px solid hsl(0, 16%, 26%);
+  background-image: url("/images/404.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 200px;
 }
 .location {
   font-size: 0.8em;
@@ -60,16 +76,19 @@ body {
 .temperature {
   font-size: 2em;
   width: 50%;
-  margin: 1px auto 1px 0;
 }
 #feelsLike {
-  font-size: 0.5em;
+  font-size: 0.4em;
 }
 .information {
   font-size: 0.8em;
   width: 50%;
-  margin: 5px auto 5px 0;
+  /*margin: 5px auto 5px 0;*/
   height: initial;
+}
+.spaceOut {
+  display: inline-block;
+  width: 100px;
 }
 
 
@@ -81,12 +100,54 @@ body {
   text-transform: uppercase;
   list-style: none;
   padding-left: 0;
-}
-.otherForecasts ul li:hover {
-  background-color: grey;
+  background-color: #000;
 }
 
-.space {
-  background-color: #cf1;
-  min-height: 40px;
+#hourlyForecast .space div {
+  display: inline-block;
+  width: 23%;
+  height: 95%;
+  margin: 5px 2px;
+  border-radius: 5px;
+  border: 2px solid #FFC300;
+  font-size: 0.9em;
+  text-transform: capitalize;
 }
+.space div img {
+  height: 50px;
+}
+
+#fiveDayForecast .space div {
+  width: 96%;
+  margin: 6px auto;
+  border-radius: 5px;
+  border: 2px solid #FFC300;
+  font-size: 0.8em;
+}
+.space div span {
+  width: 24%;
+  display: inline-block;
+  text-align: center;
+  padding-bottom: 10px;
+}
+#fiveDayForecast .space div img {
+  height: 40px;
+  margin: -5px auto -15px;
+}
+.space {
+  background-color: #433F3F;
+  min-height: 40px;
+  padding: 10px auto;
+}
+
+.mainItem {
+  text-shadow: 2px 2px 1px hsl(37, 93%, 31%);
+  border-top: 2px solid hsl(37, 93%, 71%);
+  border-bottom: 2px solid hsl(37, 93%, 31%);
+  background-color: #F39C12;}
+.mainItem:hover {
+  border-top: 2px solid hsl(37, 93%, 31%);
+  border-bottom: 2px solid hsl(37, 93%, 71%);}
+
+  .firstItem {border-radius: 5px 5px 0 0;}
+  .lastItem {border-radius: 0 0 5px 5px;}
