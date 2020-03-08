@@ -11,7 +11,7 @@ api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
 api.openweathermap.org/data/2.5/forecast?q={city name},{state}&appid={your api key}
 api.openweathermap.org/data/2.5/forecast?q={city name},{state},{country code}&appid={your api key}
 
-WEATHER CODES:
+WEATHER ICON CODES:
 http://openweathermap.org/img/wn/{weather.icon}@2x.png
 
 WEATHER MAP URL:
@@ -35,7 +35,10 @@ $(function() {
   }
 
   var apiKey = config.WM_KEY;
+  var oldCity = "Brampton";
   var city = "Brampton";
+  var listOfCities;
+  var userOptions = [];
   var currenturl = "https://api.openweathermap.org/data/2.5/weather";
   var forecasturl = "https://api.openweathermap.org/data/2.5/forecast";
   var wmdata = {
@@ -64,6 +67,8 @@ $(function() {
   };
   var units = selectors.c;
 
+
+  readCities();
   getCurrentWeather();
   getHourlyWeather();
 
@@ -72,6 +77,10 @@ $(function() {
       $(this).hide();
     }
   });
+
+  $("#close").on("click", function(){
+    $("#note").css("visibility","hidden");
+  })
 
   //Add event listener for unit selection - triggering data change
   $(".otherForecasts ul li").on("click", function() {
@@ -86,7 +95,7 @@ $(function() {
           $(this).next().removeClass("lastItem");
         }
       }
-      $(this).next().toggle(500);
+      $(this).next().slideToggle(500);
     }
     if($(this).index() == 4) {
 
@@ -109,6 +118,28 @@ $(function() {
     getCurrentWeather();
     getHourlyWeather();
   });
+
+  $("#searchButton").on("click", function(e) {
+    e.preventDefault();
+    var tempCity = $("#citySearch").val();
+    if (tempCity.length != 0) {
+      if (checkCity(tempCity)) {
+        oldCity = city;
+        showOptions();
+        //city = showOptions();
+
+        getCurrentWeather();
+        getHourlyWeather();
+      }
+      else {
+        alert("City not found in Database");
+      }
+    }
+    console.log(tempCity);
+
+
+
+  })
 
 
   function getCurrentWeather() {
@@ -151,6 +182,14 @@ $(function() {
   }
 
 
+  function readCities() {
+    $.getJSON("/js/city.list.json", function(data) {
+      listOfCities = data
+      console.log(listOfCities);
+    });
+  }
+
+
   function writeData(data) {
     $("#location").text(data.name + ", " + data.sys.country);
     $("#temperature").html(data.main.temp + " " + units.temperature);
@@ -180,7 +219,6 @@ $(function() {
     }
 
     var $firstElement = $("#hourlyForecast .space div");
-    console.log($firstElement[0]);
 
     $firstElement.each(function(index) {
       var tempTime = new Date(data.list[index].dt * 1000);
@@ -201,7 +239,6 @@ $(function() {
     }
 
     var $fiveDayElements = $("#fiveDayForecast .space div");
-    console.log($fiveDayElements);
 
     $fiveDayElements.each(function(index) {
       var tempTime = new Date(data.list[index].dt * 1000);
@@ -218,19 +255,42 @@ $(function() {
     return hour + " " + ampm;
   }
 
+
+  function checkCity(cityname) {
+    cityname = cityname.split(" ").join("");
+    var tempCityName = cityname.split(",")[0].toLowerCase();
+    var flag = false;
+    console.log(tempCityName);
+    console.log(listOfCities.length);
+
+    userOptions = [];
+    var optionCounter = 0;
+
+    for (var i = 0; i < listOfCities.length; i++) {
+      var listCity = listOfCities[i].name.toLowerCase();
+      if (tempCityName == listCity) {
+        userOptions[optionCounter] = {
+          city: listOfCities[i].name,
+          state: listOfCities[i].state,
+          country: listOfCities[i].country
+        };
+        optionCounter++;
+        flag = true;
+      }
+    }
+    console.log(userOptions);
+
+    return flag;
+  }
+
+
+  function showOptions() {
+    $("#note").empty();
+    var options = "<div id=\"close\">Back</div><ul id=\"options\">Did you mean:";
+    $(userOptions).each(function(index) {
+      options += "<li>"+userOptions[index].city+","+userOptions[index].state+","+userOptions[index].country+"</li>";
+    });
+    $("#note").append(options+"</ul>");
+    $("#note").css("visibility","visible");
+  }
 });
-
-
-
-/*
-//test bed
-var temp = "<p>Description: "+ data.weather[0].description +"<br />";
-temp += "Wind: "+ data.wind.speed + " " + units.windSpeed + "<br />";
-temp += "Humidity: "+ data.main.humidity +"%<br />";
-temp += "Pressure: "+ data.main.pressure +" hpa<br />";
-temp += "Visibility: "+ data.visibility +"<br />";
-temp += "Cloud: "+ data.clouds.all +"%<br />";
-temp += "Temperature: "+ data.main.temp + " " + units.temperature + "<br />";
-temp += "City: "+ data.name + ", " + data.sys.country +"</p>";
-$(".test").append(temp);
-*/
