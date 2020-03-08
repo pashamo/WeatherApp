@@ -174,6 +174,7 @@ $(function() {
 
 
   function writeTwoFourData(data) {
+    $("#hourlyForecast .space").empty();
     for (var i = 0; i < 8; i++) {
       $("#hourlyForecast .space").append("<div></div>");
     }
@@ -194,6 +195,7 @@ $(function() {
 
 
   function writeFourZeroData(data) {
+    $("#fiveDayForecast .space").empty();
     for (var i = 0; i < 40; i++) {
       $("#fiveDayForecast .space").append("<div></div>");
     }
