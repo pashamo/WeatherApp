@@ -58,7 +58,7 @@ body {
   margin: 20px auto;
   padding: 0 10px;
   min-height: 200px;
-  background-color: #433F3F;
+  background-color: #716387;
   border-radius: 5px;
   border-top: 2px solid hsl(0, 6%, 45%);
   border-bottom: 2px solid hsl(0, 16%, 26%);
@@ -135,7 +135,7 @@ body {
   margin: -5px auto -15px;
 }
 .space {
-  background-color: #433F3F;
+  background-color: #716387;
   min-height: 40px;
   padding: 10px auto;
 }
