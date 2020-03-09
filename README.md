@@ -31,3 +31,4 @@ As per my requirements, the UI was designed on Mockflow. The following is the te
 
 Initial HTML template based on the Mockflow design:
 ![HTML Template](images/weatherAppHTMLtemplate_v2.png)
+<img width="400px" src="images/weatherAppHTMLtemplate_v2.png" align="center">
