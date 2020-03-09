@@ -38,6 +38,7 @@ $(function() {
   var oldCity = "Brampton";
   var city = "Brampton";
   var listOfCities;
+  var listOfCountries;
   var userOptions = [];
   var currenturl = "https://api.openweathermap.org/data/2.5/weather";
   var forecasturl = "https://api.openweathermap.org/data/2.5/forecast";
@@ -68,7 +69,7 @@ $(function() {
   var units = selectors.c;
 
 
-  readCities();
+  readFiles();
   getCurrentWeather();
   getHourlyWeather();
 
@@ -76,11 +77,9 @@ $(function() {
     if (index%2 == 1) {
       $(this).hide();
     }
+    $("#note").hide();
   });
 
-  $("#close").on("click", function(){
-    $("#note").css("visibility","hidden");
-  })
 
   //Add event listener for unit selection - triggering data change
   $(".otherForecasts ul li").on("click", function() {
@@ -125,20 +124,13 @@ $(function() {
     if (tempCity.length != 0) {
       if (checkCity(tempCity)) {
         oldCity = city;
+        //showOptions();
         showOptions();
-        //city = showOptions();
-
-        getCurrentWeather();
-        getHourlyWeather();
       }
       else {
         alert("City not found in Database");
       }
     }
-    console.log(tempCity);
-
-
-
   })
 
 
@@ -182,16 +174,18 @@ $(function() {
   }
 
 
-  function readCities() {
+  function readFiles() {
     $.getJSON("/js/city.list.json", function(data) {
       listOfCities = data
-      console.log(listOfCities);
+    });
+    $.getJSON("/js/countries.json", function(data1) {
+      listOfCountries = data1;
     });
   }
 
 
   function writeData(data) {
-    $("#location").text(data.name + ", " + data.sys.country);
+    $("#location").text(data.name + ", " + getCountryName(data.sys.country));
     $("#temperature").html(data.main.temp + " " + units.temperature);
     $("#feelsLike").html("Feels like " + data.main.feels_like + " " + units.temperature);
     $("#weatherDescription").text(data.weather[0].description);
@@ -260,8 +254,6 @@ $(function() {
     cityname = cityname.split(" ").join("");
     var tempCityName = cityname.split(",")[0].toLowerCase();
     var flag = false;
-    console.log(tempCityName);
-    console.log(listOfCities.length);
 
     userOptions = [];
     var optionCounter = 0;
@@ -278,19 +270,48 @@ $(function() {
         flag = true;
       }
     }
-    console.log(userOptions);
 
     return flag;
   }
 
 
+  function getCountryName(code){
+    var country;
+    for (var i = 0; i < listOfCountries.length; i++) {
+      if (listOfCountries[i].code == code) {
+        country = listOfCountries[i].name;
+        break;
+      }
+    }
+    return country;
+  }
+
+
   function showOptions() {
+    var userSelect;
     $("#note").empty();
     var options = "<div id=\"close\">Back</div><ul id=\"options\">Did you mean:";
     $(userOptions).each(function(index) {
       options += "<li>"+userOptions[index].city+","+userOptions[index].state+","+userOptions[index].country+"</li>";
     });
-    $("#note").append(options+"</ul>");
-    $("#note").css("visibility","visible");
+    options += "</ul>";
+    $("#note").append(options);
+    $("#note").toggle(500);
+
+    $("#close").on("click", function(){
+      $("#note").toggle(500);
+    });
+    $("#options").on("click", function(e){
+      userSelect = e.target.textContent;
+      console.log(userSelect);
+      $("#note").toggle(500);
+
+      city = userSelect;
+      $("#citySearch").val(city);
+
+      getCurrentWeather();
+      getHourlyWeather();
+    });
   }
+
 });

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Amaranth&display=swap');
+/*@import url(http://fonts.googleapis.com/css?family=Oswald);*/
+/*font-family: 'Oswald', 'Futura', sans-serif;*/
 
 body {
   font-family: "Amaranth", sans-serif;
@@ -178,10 +180,9 @@ div#note {
   width: 50%;
   margin: 0 0 0 auto;
   position: absolute;
-  z-index: 10;
+  z-index: 1;
   top: 1em;
   left: 0;
-  visibility: hidden;
 }
 #note ul {
   padding-left: 0;
@@ -197,4 +198,19 @@ div#close {
   vertical-align: text-bottom;
   background-position: center left;
   background-repeat: no-repeat;
+}
+div#close:hover {
+  color: green;
+}
+#options li {
+  width: 95%;
+  height: 20px;
+  background-color: #433F3F;
+  border-top: 2px solid hsl(0, 6%, 45%);
+  border-bottom: 2px solid hsl(0, 16%, 26%);
+}
+#options li:hover {
+  color: green;
+  border-top: 2px solid hsl(0, 16%, 26%);
+  border-bottom: 2px solid hsl(0, 6%, 45%);
 }
