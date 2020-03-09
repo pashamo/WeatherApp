@@ -22,13 +22,27 @@ The following can be observed:
   * A list of 40, three hour segments weather data
   * Each item contains time, dat, weather icon, weather description and temperature
 * Choice of metric or imperial units
+* Search for any city
 * Weather map (currently unavailable)
 
 
 ## Design Document
-As per my requirements, the UI was designed on Mockflow. The following is the template that is actualized in my product:
+### Templates
+As per my requirements, the UI was designed on Mockflow. The following is the template that is actualized in my product:  
 ![Design Template](images/weatherAppTemplate_v2.png)
 
-Initial HTML template based on the Mockflow design:
-![HTML Template](images/weatherAppHTMLtemplate_v2.png)
-<img width="400px" src="images/weatherAppHTMLtemplate_v2.png" align="center"><img width="400px" src="images/weatherAppHTMLtemplate_v2.png" align="center">
+Initial HTML template based on the Mockflow design:  
+<img width="400px" src="images/weatherAppHTMLtemplate_v2.png" align="center">
+
+### Final App
+Metric and imperial units selection:  
+<img width="400px" src="images/finalAppC.png" align="center"><img width="400px" src="images/finalAppF.png" align="center">  
+
+3 hour / 1 day forecast:  
+<img width="400px" src="images/3hour1day.png" align="center">  
+
+3 hour / 5 day forecast:  
+<img width="400px" src="images/3hour5day.png" align="center">  
+
+Search for any city:  
+<img align="center" width="400px" src="images/citySearch.png">  
