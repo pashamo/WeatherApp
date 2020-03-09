@@ -185,7 +185,7 @@ $(function() {
 
 
   function writeData(data) {
-    $("#location").text(data.name + ", " + getCountryName(data.sys.country));
+    $("#location").text(data.name + ", " + listOfCountries[data.sys.country]);
     $("#temperature").html(data.main.temp + " " + units.temperature);
     $("#feelsLike").html("Feels like " + data.main.feels_like + " " + units.temperature);
     $("#weatherDescription").text(data.weather[0].description);
@@ -272,18 +272,6 @@ $(function() {
     }
 
     return flag;
-  }
-
-
-  function getCountryName(code){
-    var country;
-    for (var i = 0; i < listOfCountries.length; i++) {
-      if (listOfCountries[i].code == code) {
-        country = listOfCountries[i].name;
-        break;
-      }
-    }
-    return country;
   }
 
 
