@@ -2,11 +2,11 @@
 Developing a web app that displays weather for a given city, using openweathermap API.
 
 ## Objective
-* Display ability to use HTML, CSS, Javascript and jQuery effectively
-* Understand AJAX calls and API usage
+1. Display ability to use HTML, CSS, Javascript and jQuery effectively
+2. Understand AJAX calls and API usage
   * JSON and XML usage
-* Using Mockfow for webpage design
-* Completing this project that I struggled with in University
+3. Using Mockfow for webpage design
+4. Completing this project that I struggled with in University
 
 ## Features
 This app is designed mirroring some features already available on the web. The design inspiration comes from _theweathernetwork.com_. 
