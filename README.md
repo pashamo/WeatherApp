@@ -1,5 +1,5 @@
 # WeatherApp
-Developing a web app that displays weather for a given city, using openweathermap API.
+A web application that displays weather for a given city, using openweathermap API.
 
 ## Objective
 1. Display ability to use HTML, CSS, Javascript and jQuery effectively
