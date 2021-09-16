@@ -7,11 +7,10 @@ Download the project and ensure the following are present:
 - /css
 - index.html
 
-You must add your own openweathermap api key.
-- Create a *config.js* under the *js* directory. Add your key to constant *WM_KEY* OR
-- Replace *config.WM_KEY* in */js/script.js* with your key
+You must add your own openweathermap api key:
+- Create a *config.js* under the *js* directory, add your key to constant *WM_KEY*
 
-Navigate to project path in terminal and use 'http-server' or 'live-server' to run locally.
+Navigate to project path in terminal and use `http-server` or `live-server` to run locally.
 
 ## Features
 This app is designed mirroring some features already available on the web. The design inspiration comes from _theweathernetwork.com_. All processing is done in the front end, which causes application to run a little resource heavy.
