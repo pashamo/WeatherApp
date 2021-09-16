@@ -80,7 +80,7 @@ body {
   border-radius: 5px;
   border-top: 2px solid hsl(0, 6%, 45%);
   border-bottom: 2px solid hsl(0, 16%, 26%);
-  background-image: url("/images/404.png");
+  background-image: url("../images/404.png");
   background-repeat: no-repeat;
   background-position: center right;
   background-size: 200px;
@@ -193,7 +193,7 @@ div#close {
   width: 32px;
   border-radius: 16px 0 0 16px;
   padding-left: 36px;
-  background-image: url("/images/left.png");
+  background-image: url("../images/left.png");
   background-size: 24px;
   vertical-align: text-bottom;
   background-position: center left;

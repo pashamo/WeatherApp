@@ -24,7 +24,7 @@ y=number of y tile coordinate
 
 $(function() {
 
-  var week = {
+  const week = {
     0: "Sun",
     1: "Mon",
     2: "Tue",
@@ -34,23 +34,23 @@ $(function() {
     6: "Sat"
   }
 
-  var apiKey = config.WM_KEY;
-  var oldCity = "Brampton";
-  var city = "Brampton";
-  var listOfCities;
-  var listOfCountries;
-  var userOptions = [];
-  var currenturl = "https://api.openweathermap.org/data/2.5/weather";
-  var forecasturl = "https://api.openweathermap.org/data/2.5/forecast";
-  var wmdata = {
+  let apiKey = config.WM_KEY;
+  let oldCity = "Brampton";
+  let city = "Brampton";
+  let listOfCities;
+  let listOfCountries;
+  let userOptions = [];
+  let currenturl = "https://api.openweathermap.org/data/2.5/weather";
+  let forecasturl = "https://api.openweathermap.org/data/2.5/forecast";
+  let wmdata = {
     layer: "clouds_new/",
     z: "6/",
     x: "0/",
     y: "0"
   }
 
-  var wmurl = "https://tile.openweathermap.org/map/"+wmdata.layer+wmdata.z+wmdata.x+wmdata.y+".png";
-  var selectors = {
+  let wmurl = "https://tile.openweathermap.org/map/"+wmdata.layer+wmdata.z+wmdata.x+wmdata.y+".png";
+  const selectors = {
     f: {
       unitFormat:"imperial",
       windSpeed: "mph",
@@ -66,7 +66,7 @@ $(function() {
       vis: "km"
     }
   };
-  var units = selectors.c;
+  let units = selectors.c;
 
 
   readFiles();
@@ -83,7 +83,7 @@ $(function() {
 
   //Add event listener for unit selection - triggering data change
   $(".otherForecasts ul li").on("click", function() {
-    var indexVal = $(this).index();
+    let indexVal = $(this).index();
     if (indexVal%2 == 0) {
       if(indexVal == 4) {
         if($(this).next().is(":hidden")) {
@@ -120,11 +120,10 @@ $(function() {
 
   $("#searchButton").on("click", function(e) {
     e.preventDefault();
-    var tempCity = $("#citySearch").val();
+    let tempCity = $("#citySearch").val();
     if (tempCity.length != 0) {
       if (checkCity(tempCity)) {
         oldCity = city;
-        //showOptions();
         showOptions();
       }
       else {
@@ -175,10 +174,10 @@ $(function() {
 
 
   function readFiles() {
-    $.getJSON("/js/city.list.json", function(data) {
+    $.getJSON("./js/city.list.json", function(data) {
       listOfCities = data
     });
-    $.getJSON("/js/countries.json", function(data1) {
+    $.getJSON("./js/countries.json", function(data1) {
       listOfCountries = data1;
     });
   }
@@ -208,15 +207,15 @@ $(function() {
 
   function writeTwoFourData(data) {
     $("#hourlyForecast .space").empty();
-    for (var i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i++) {
       $("#hourlyForecast .space").append("<div></div>");
     }
 
-    var $firstElement = $("#hourlyForecast .space div");
+    let $firstElement = $("#hourlyForecast .space div");
 
     $firstElement.each(function(index) {
-      var tempTime = new Date(data.list[index].dt * 1000);
-      var hourText = "<p>"+ week[tempTime.getDay()] + "<br />";
+      let tempTime = new Date(data.list[index].dt * 1000);
+      let hourText = "<p>"+ week[tempTime.getDay()] + "<br />";
       hourText += getAMPM(tempTime) + "</p>";
       hourText += "<img src=\"http://openweathermap.org/img/wn/" + data.list[index].weather[0].icon + "@2x.png\" />";
       hourText += "<p>" + data.list[index].main.temp + " " + units.temperature + "<br />";
@@ -228,38 +227,38 @@ $(function() {
 
   function writeFourZeroData(data) {
     $("#fiveDayForecast .space").empty();
-    for (var i = 0; i < 40; i++) {
+    for (let i = 0; i < 40; i++) {
       $("#fiveDayForecast .space").append("<div></div>");
     }
 
-    var $fiveDayElements = $("#fiveDayForecast .space div");
+    let $fiveDayElements = $("#fiveDayForecast .space div");
 
     $fiveDayElements.each(function(index) {
-      var tempTime = new Date(data.list[index].dt * 1000);
-      var hourText = "<span class=\"time\">"+ week[tempTime.getDay()] + " " + getAMPM(tempTime) + "</span><span class=\"image\"><img src=\"http://openweathermap.org/img/wn/" + data.list[index].weather[0].icon + "@2x.png\" /></span><span class=\"temp\">" + data.list[index].main.temp + " " + units.temperature + "</span><span class=\"desc\">" + data.list[index].weather[0].description + "</span>";
+      let tempTime = new Date(data.list[index].dt * 1000);
+      let hourText = "<span class=\"time\">"+ week[tempTime.getDay()] + " " + getAMPM(tempTime) + "</span><span class=\"image\"><img src=\"http://openweathermap.org/img/wn/" + data.list[index].weather[0].icon + "@2x.png\" /></span><span class=\"temp\">" + data.list[index].main.temp + " " + units.temperature + "</span><span class=\"desc\">" + data.list[index].weather[0].description + "</span>";
       $(this).html(hourText);
     });
   }
 
 
   function getAMPM(time) {
-    var hour = time.getHours();
-    var ampm = hour >= 12 ? "PM" : "AM";
+    let hour = time.getHours();
+    let ampm = hour >= 12 ? "PM" : "AM";
     hour = hour%12 == 0 ? 12 : hour%12;
     return hour + " " + ampm;
   }
 
 
   function checkCity(cityname) {
-    cityname = cityname.split(" ").join("");
-    var tempCityName = cityname.split(",")[0].toLowerCase();
-    var flag = false;
+    //cityname = cityname.split(" ").join("");
+    let tempCityName = cityname.split(",")[0].toLowerCase();
+    let flag = false;
 
     userOptions = [];
-    var optionCounter = 0;
+    let optionCounter = 0;
 
-    for (var i = 0; i < listOfCities.length; i++) {
-      var listCity = listOfCities[i].name.toLowerCase();
+    for (let i = 0; i < listOfCities.length; i++) {
+      let listCity = listOfCities[i].name.toLowerCase();
       if (tempCityName == listCity) {
         userOptions[optionCounter] = {
           city: listOfCities[i].name,
@@ -276,9 +275,9 @@ $(function() {
 
 
   function showOptions() {
-    var userSelect;
+    let userSelect;
     $("#note").empty();
-    var options = "<div id=\"close\">Back</div><ul id=\"options\">Did you mean:";
+    let options = "<div id=\"close\">Back</div><ul id=\"options\">Did you mean:";
     $(userOptions).each(function(index) {
       options += "<li>"+userOptions[index].city+","+userOptions[index].state+","+userOptions[index].country+"</li>";
     });
@@ -291,7 +290,7 @@ $(function() {
     });
     $("#options").on("click", function(e){
       userSelect = e.target.textContent;
-      console.log(userSelect);
+      console.log(userSelect); //Debugging
       $("#note").toggle(500);
 
       city = userSelect;

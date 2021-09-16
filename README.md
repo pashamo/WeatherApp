@@ -1,11 +1,17 @@
 # WeatherApp
 Developing a web app that displays weather for a given city, using openweathermap API.
 
-## Objective
-1. Display ability to use HTML, CSS, Javascript and jQuery effectively
-2. Understand AJAX calls and API usage (w/JSON and XML)
-3. Using Mockfow for webpage design
-4. Completing this project that I struggled with in University
+## Usage
+Download the project and ensure the following are present:
+- /js 
+- /css
+- index.html
+
+You must add your own openweathermap api key.
+- Create a *config.js* under the *js* directory. Add your key to constant *WM_KEY* OR
+- Replace *config.WM_KEY* in */js/script.js* with your key
+
+Navigate to project path in terminal and use 'http-server' or 'live-server' to run locally.
 
 ## Features
 This app is designed mirroring some features already available on the web. The design inspiration comes from _theweathernetwork.com_. All processing is done in the front end, which causes application to run a little resource heavy.
@@ -24,14 +30,16 @@ The following can be observed:
 * Search for any city
 * Weather map (currently unavailable)
 
+## Objective
+1. Display ability to use HTML, CSS, Javascript and jQuery effectively
+2. Understand AJAX calls and API usage (w/JSON and XML)
+3. Using Mockfow for webpage design
+4. Completing this project that I struggled with in University
 
 ## Design Document
 ### Templates
 As per my requirements, the UI was designed on Mockflow. The following is the template that is actualized in my product:  
 ![Design Template](images/weatherAppTemplate_v2.png)
-
-Initial HTML template based on the Mockflow design:  
-<img width="400px" src="images/weatherAppHTMLtemplate_v2.png" align="center">
 
 ### Final App
 Metric and imperial units selection:  
