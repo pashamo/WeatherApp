@@ -144,8 +144,6 @@ $(function() {
       },
       timeout:2000,
       success: function(data) {
-        console.log(data);
-
         writeData(data);
       }
     });
@@ -164,8 +162,6 @@ $(function() {
       },
       timeout:2000,
       success: function(data) {
-        console.log(data);
-
         writeTwoFourData(data);
         writeFourZeroData(data);
       }
@@ -279,7 +275,8 @@ $(function() {
     $("#note").empty();
     let options = "<div id=\"close\">Back</div><ul id=\"options\">Did you mean:";
     $(userOptions).each(function(index) {
-      options += "<li>"+userOptions[index].city+","+userOptions[index].state+","+userOptions[index].country+"</li>";
+      let formattedLocation = userOptions[index].city+","+userOptions[index].state+","+userOptions[index].country;
+      options += "<li>"+formattedLocation.replace(",,",",")+"</li>";
     });
     options += "</ul>";
     $("#note").append(options);
@@ -290,7 +287,6 @@ $(function() {
     });
     $("#options").on("click", function(e){
       userSelect = e.target.textContent;
-      console.log(userSelect); //Debugging
       $("#note").toggle(500);
 
       city = userSelect;
