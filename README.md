@@ -2,15 +2,10 @@
 Developing a web app that displays weather for a given city, using openweathermap API. Click [here](https://weatherapp-mp.herokuapp.com/) to try out the app.
 
 ## Usage
-Download the project and ensure the following are present:
-- /js 
-- /css
-- index.html
+Using `npm`(Node Package Manager) install the dependencies. Then run the command `npm start` which will run a *nodemon* live server on port 3000. Navigate to `localhost:3000` in your browser to view the app. 
 
-You must add your own openweathermap api key:
-- Create a *config.js* under the *js* directory, add your key to constant *WM_KEY*
-
-Navigate to project path in terminal and use `http-server` or `live-server` to run locally.
+NOTE: You must add your own openweathermap api key:
+- Create file *js/config.json*, add your key to constant *WM_KEY*
 
 ## Features
 This app is designed mirroring some features already available on the web. The design inspiration comes from _theweathernetwork.com_. All processing is done in the front end, which causes application to run a little resource heavy.
