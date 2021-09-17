@@ -34,7 +34,11 @@ $(function() {
     6: "Sat"
   }
 
-  let apiKey = config.WM_KEY;
+  let apiKey;
+  $.getJSON("./js/config.json", function(data) {
+    apiKey = data.WM_KEY;
+    getCurrentWeather();
+  });
   let oldCity = "Brampton";
   let city = "Brampton";
   let listOfCities;
