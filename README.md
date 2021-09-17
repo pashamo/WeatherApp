@@ -1,5 +1,5 @@
 # WeatherApp
-Developing a web app that displays weather for a given city, using openweathermap API.
+Developing a web app that displays weather for a given city, using openweathermap API. Click [here](https://weatherapp-mp.herokuapp.com/) to try out the app.
 
 ## Usage
 Download the project and ensure the following are present:
